@@ -1,0 +1,45 @@
+https://stackoverflow.com/questions/5700636/using-javascript-to-perform-text-matches-with-without-accented-characters
+
+
+
+I think this is the neatest solution
+
+var nIC = new Intl.Collator(undefined , {sensitivity: 'base'})
+var cmp = nIC.compare.bind(nIC)
+It will return 0 if the two strings are the same, ignoring accents.
+
+Alternatively you try localecompare
+
+'être'.localeCompare('etre',undefined,{sensitivity: 'base'})
+
+
+-----------------
+https://newbedev.com/mongodb-how-to-find-documents-ignoring-case-sensitive-accents-and-percent-like-logic
+
+MongoDB: how to find documents ignoring case sensitive, accents and percent like logic (%)
+
+ace vowels with a regex which contains accents vowels. Additionally can use $options: 'i' to avoid case sensitive.
+
+function diacriticSensitiveRegex(string = '') {
+         return string.replace(/a/g, '[a,á,à,ä]')
+            .replace(/e/g, '[e,é,ë]')
+            .replace(/i/g, '[i,í,ï]')
+            .replace(/o/g, '[o,ó,ö,ò]')
+            .replace(/u/g, '[u,ü,ú,ù]');
+    }
+
+find ({ name: { $regex: diacriticSensitiveRegex('pala'), $options: 'i' } });
+
+--------------------
+
+String.prototype.replace
+JavaScript
+The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match.
+
+String.prototype.replace (searchValue, replaceValue)
+
+
+--------------------
+
+Ejemplo: https://www.w3schools.com/jsref/jsref_replace.asp
+

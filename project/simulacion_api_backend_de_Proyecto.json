@@ -1,0 +1,428 @@
+{
+  "uuid": "c4c3eb77-3bbe-4fd2-a7b9-10c7c077aaf4",
+  "lastMigration": 19,
+  "name": "Simulacion api backend de Proyecto",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "ee12ad22-eac6-4869-a11d-af23b178e62a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "users/:tipo/:page",
+      "responses": [
+        {
+          "uuid": "4e457b86-b672-4c76-8bd9-687c298cbf34",
+          "body": "{\n  \"nombre\":\"pepe\",\n  \"tipo\":\"gerente\"\n},\n{\n  \"nombre\":\"camilo\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"hermenegildo\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"juan\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"pedro\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"angel\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"miguel\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"ambrosio\",\n  \"tipo\":\"empleado\"\n},\n{\n  \"nombre\":\"oscar\",\n  \"tipo\":\"empleado\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "34241323-359d-4bdb-8590-5789fef0eb11",
+          "body": "<h1>Error</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "7d13c018-b725-4af7-a1d8-8737c42571a1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f42a7e13-38fc-43a3-9d5b-78b211319331",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "user/",
+      "responses": [
+        {
+          "uuid": "ccf95eff-f323-4f06-9c10-6b8723df3b6f",
+          "body": "123456789",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "fb076b7f-ea8c-422b-81e3-da918470af6c",
+          "body": "<h1>Error de creacion de usuario</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3ac1aeb3-bc69-49e7-9103-d290cc058692",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "user/:id",
+      "responses": [
+        {
+          "uuid": "1dceb5f7-5e09-4110-9432-b949d038cbc0",
+          "body": "<h1>Lógica de modificación de usuario</h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "8dc28435-547d-4df4-9cdd-a4925b66a5b8",
+          "body": "<h1>Error de modificacion de usuario</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "1d39c632-64b1-489b-bf36-67f1350fa48e",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "user/:id",
+      "responses": [
+        {
+          "uuid": "9122ade6-d9cc-4c00-bc46-83f749db68b8",
+          "body": "<h1>Lógica para acceder al perfil de un usuario</h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "3b05113f-0e60-4298-a08b-c3f8ccc11908",
+          "body": "<h1>No se puede acceder al perfil</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "92fcd6b4-ab42-443a-a540-02fc50731c55",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "user/:id",
+      "responses": [
+        {
+          "uuid": "51304b49-a969-41df-8f8c-872aae57c9ed",
+          "body": "<h1>Lógica para borrar un usuario</h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "e050c395-78df-4d59-bdf0-fae2b033e7bd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "830f7961-31ab-4200-a3dd-7957c394fb40",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products/:cat/:pmin/:pmax",
+      "responses": [
+        {
+          "uuid": "ce3e4256-e411-4cd9-a3eb-d1520e5e127d",
+          "body": "{\n  \"nombre\": \"zapatilla geox\"\n  \"categoria\": \"casual\"\n  \"precio\": 100\n},{\n  \"nombre\": \"zapatilla sketchers\"\n  \"categoria\": \"sport\"\n  \"precio\": 85\n},{\n  \"nombre\": \"zapatilla adidas\"\n  \"categoria\": \"casual\"\n  \"precio\": 90\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "309bf7eb-ad9d-4a06-9aa0-fad751152ff3",
+          "body": "<h1>No se ha podido traer la lista de productos</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "03ad1041-f068-47d6-89b0-49e83c8cb806",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "product",
+      "responses": [
+        {
+          "uuid": "2a64b22b-8e0f-4aa9-9381-1d64d7ab0e00",
+          "body": "<h1>Lógica de ALTA de producto</h1>",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "629d7799-10be-4aca-a0ba-e0e0b7330ab3",
+          "body": "<h1>Error de ALTA de producto</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "c8e17fdd-4896-406c-ba8a-d58ceb2b7c2d",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "product/:id",
+      "responses": [
+        {
+          "uuid": "9370bd9a-6fda-4f83-9268-0135e3a679fb",
+          "body": "<h1>Lógica de BAJA de producto</h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "9e501dfd-442c-456a-94fd-33c51da438b1",
+          "body": "<h1>Error de BAJA de producto</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
