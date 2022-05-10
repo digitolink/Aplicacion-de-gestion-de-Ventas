@@ -392,6 +392,123 @@
       "enabled": true,
       "randomResponse": false,
       "sequentialResponse": false
+    },
+    {
+      "uuid": "01d9ad43-31b7-4b0e-8e8c-075e73261555",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "10dd1b97-ddca-4ccb-b93a-79c3308a4a28",
+          "body": "<h1> Logica de inserción del nuevo usuario en la base de datos </h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "739cbd71-5977-4984-ab4b-9f3f5b509786",
+          "body": "<h1>Error de creación del usuario</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "85a7765f-698d-4d70-88b1-64abe5dba6be",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products/:idproducto/:idusuario",
+      "responses": [
+        {
+          "uuid": "a6bb032f-05c2-4347-910d-ee6c084da4a6",
+          "body": "<h1>Mostramos estadísticas con datos de productos y usuarios>/h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "aebc3e41-b791-4700-bb19-cd3ce3758353",
+          "body": "<h1>Error al intentar obtener la estadística de productos y usuarios</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "177b9bf7-36f3-4384-a88b-a4bc794ee252",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products/:id",
+      "responses": [
+        {
+          "uuid": "f49f45be-9327-47cb-812b-f7eadee71f4f",
+          "body": "<h1>Mostramos la ficha del producto</h1>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "2349bda1-5658-4c51-94ab-54fcd942dba5",
+          "body": "<h1>Error al intentar mostrar la ficha del producto</h1>",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
     }
   ],
   "proxyMode": false,
