@@ -1,5 +1,8 @@
 import express from "express";
-const PORT = 3000;
+import { postProductController } from "./controllers/productControllers.mjs";
+import { validatorFactory } from "./middleware/validatorFactory.mjs";
+import { productSchema } from "./schemas/product.mjs";
+const PORT = 3001;
 //crear la instancia de express y lanza el servidor
 //crear la api con la instancia de express
 
