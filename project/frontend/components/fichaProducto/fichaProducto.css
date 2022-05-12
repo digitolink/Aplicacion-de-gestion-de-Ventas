@@ -1,0 +1,9 @@
+.foto{
+    height: 100vh;
+    width: 30vw;
+}
+.datosProducto{
+    height: 100vh;
+    width: auto;
+    background-color: green;
+}
