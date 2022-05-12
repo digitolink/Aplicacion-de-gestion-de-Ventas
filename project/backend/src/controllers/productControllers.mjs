@@ -21,3 +21,23 @@ export function postProductController(req, res){
         res.send("No fue posible añadir el producto a la base de datos");
     }
 }
+
+export function getProductsController(req, res){
+    try{
+        db.all(`
+        SELECT * FROM productos`,
+        (error, data) =>{
+            if (error){
+                console.error(error);
+                res.sendStatus(500);
+            }
+            else {
+                res.json(data);
+            }
+        } )
+
+    }catch(error){
+        console.error(error);
+        res.send("No fue posible listar productos de la base de datos");
+    }
+}

@@ -1,5 +1,5 @@
 import express from "express";
-import { postProductController } from "./controllers/productControllers.mjs";
+import { getProductsController, postProductController } from "./controllers/productControllers.mjs";
 import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
 const PORT = 3001;
@@ -13,6 +13,7 @@ try {
     })
     expressInstance.use(express.json());
     expressInstance.post("/api/v0.1/product",validatorFactory(productSchema), postProductController);
+    expressInstance.get("/api/v0.1/products", getProductsController);
 
 
 }catch(error){
