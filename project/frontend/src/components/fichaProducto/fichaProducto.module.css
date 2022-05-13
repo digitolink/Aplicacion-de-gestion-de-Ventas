@@ -1,9 +1,18 @@
 .foto{
-    height: 100vh;
-    width: 30vw;
+    flex-grow: 1;
+    background-color: aqua;
 }
 .datosProducto{
-    height: 100vh;
-    width: auto;
+    flex-grow: 2;
     background-color: green;
+}
+
+main{
+    display: flex;
+    background-color: red;
+
+}
+.tamanoFoto{
+    height: 100px;
+    width: auto;
 }

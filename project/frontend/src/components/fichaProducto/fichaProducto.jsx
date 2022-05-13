@@ -1,4 +1,5 @@
-import styles from "./components/fichaProducto/fichaProducto.module.css";
+import styles from "./fichaProducto.module.css";
+import img from "./shoes.jpg"
 
 function desbloquearHandler(){
 
@@ -8,11 +9,15 @@ function grabarHandler(){
 
 }
 
-export function FichaProducto() {
+export function FichaProducto(props) {
+    //(ver ejemplo del chat) 
+    //useEffect con fetch para recibir la inf del producto, la respuesta se guarda en el state
+    //conectar los state con los values de los input del formulario
+    //si recibimos un id se llenan los campos del formulario
     return (
-        <main>
-            <section className={styles.foto} >
-                <img src="./components/fichaProducto/shoes.jpg" alt="zapatos de muestra" />
+        <main className={styles.main}>
+            <section className = {styles.foto} >
+                <img className = {styles.tamanoFoto} src="http://localhost:3001/static/shoes.jpg" alt="zapatos de muestra" />
             </section>
             <section className={styles.datosProducto}>
                 <form action="">
@@ -34,8 +39,8 @@ export function FichaProducto() {
                     <label htmlFor="">Stock: </label>
                     <input type="text" /><br />
 
-                    <button id="desbloquear" onClick={desbloquearHandler}></button>
-                    <button id="grabar" onClick={grabarHandler}></button>
+                    <button type="button" id="desbloquear" onClick={desbloquearHandler}>Desbloquear</button>
+                    <button type="button" id="grabar" onClick={grabarHandler}>Grabar</button>
 
                 </form>
 
