@@ -21,26 +21,24 @@ export function FichaProducto(props) {
             </section>
             <section className={styles.datosProducto}>
                 <form action="">
-                    <label htmlFor="">Ruta foto: </label>
+                    <label htmlFor="">Ruta foto: </label><br />
                     <input type="text" /><br />
 
-                    <label htmlFor="">Nombre: </label>
+                    <label htmlFor="">Nombre: </label><br />
                     <input type="text" /><br />
 
                     <label htmlFor="">Descripción: </label><br />
                     <textarea placeholder=" Describe el producto">
-
                     </textarea>
-                    
                     <br />
 
-                    <label htmlFor="">Categorías: </label>
+                    <label htmlFor="">Categorías: </label><br />
                     <input type="text" /><br />
 
-                    <label htmlFor="">Precio: </label>
+                    <label htmlFor="">Precio: </label><br />
                     <input type="text" /><br />
 
-                    <label htmlFor="">Stock: </label>
+                    <label htmlFor="">Stock: </label><br />
                     <input type="text" /><br />
 
                     <button type="button" id="desbloquear" onClick={desbloquearHandler}>Desbloquear</button>
