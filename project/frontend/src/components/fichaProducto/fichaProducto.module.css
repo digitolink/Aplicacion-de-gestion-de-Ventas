@@ -2,6 +2,7 @@
     flex-grow: 1;
     background-color: cadetblue;
 }
+
 .datosProducto{
     flex-grow: 2;
     background-color: grey;

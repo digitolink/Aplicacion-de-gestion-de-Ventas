@@ -14,6 +14,9 @@ export function FichaProducto(props) {
     //useEffect con fetch para recibir la inf del producto, la respuesta se guarda en el state
     //conectar los state con los values de los input del formulario
     //si recibimos un id se llenan los campos del formulario
+
+
+    
     return (
         <main className={styles.main}>
             <section className = {styles.foto} >
