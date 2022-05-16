@@ -17,7 +17,7 @@ export function FichaProducto(props) {
     return (
         <main className={styles.main}>
             <section className = {styles.foto} >
-                <img className = {styles.tamanoFoto} src="http://localhost:3001/static/shoes.jpg" alt="zapatos de muestra" />
+                <img className = {styles.tamanoFoto} src={img} alt="zapatos de muestra" />
             </section>
             <section className={styles.datosProducto}>
                 <form action="">
@@ -27,8 +27,12 @@ export function FichaProducto(props) {
                     <label htmlFor="">Nombre: </label>
                     <input type="text" /><br />
 
-                    <label htmlFor="">Descripción: </label>
-                    <input type="text" /><br />
+                    <label htmlFor="">Descripción: </label><br />
+                    <textarea placeholder=" Describe el producto">
+
+                    </textarea>
+                    
+                    <br />
 
                     <label htmlFor="">Categorías: </label>
                     <input type="text" /><br />
