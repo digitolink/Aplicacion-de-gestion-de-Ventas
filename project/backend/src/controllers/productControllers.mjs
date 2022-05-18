@@ -1,11 +1,11 @@
-import { db } from "../db.mjs";
+import { client } from "../db.mjs";
 
 export function postProductController(req, res){
     try{
-        db.run(`
+        client.query(`
         INSERT INTO productos (rutaFoto, descripcion,nombre,
         precio, categorias, stock)
-        VALUES(?,?,?,?,?,?)
+        VALUES($1,$2,$3,$4,$5,$6)
         `,[req.body.rutaFoto, req.body.descripcion,req.body.nombre,
         req.body.precio, req.body.categorias, req.body.stock],
         (error) =>{
@@ -24,7 +24,7 @@ export function postProductController(req, res){
 
 export function getProductsController(req, res){
     try{
-        db.all(`
+        client.query(`
         SELECT * FROM productos`,
         (error, data) =>{
             if (error){

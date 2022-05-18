@@ -1,9 +1,16 @@
-import sqlite3 from "sqlite3";
+import pg from "pg";
 
-export const db = new sqlite3.Database("./ventas.db", error => {
-    if(error) throw "Error de creación de base de datos"
-    console.log("Conectado a la base de datos...");
-})
+export const client = new pg.Client(
+    {
+        user: 'fallofxq',
+        host: 'tyke.db.elephantsql.com',
+        database: 'fallofxq',
+        password: 'NQJ73FFaUz0OqB3V932GUJAskV9bItaE',
+        port: 3211,
+      }
+)
+client.connect();
+
 const creaTablaProductos=
 `CREATE TABLE
 IF NOT EXISTS
@@ -18,4 +25,7 @@ productos(
     idProducto INTEGER PRIMARY KEY
 )`
 
-db.run(creaTablaProductos);
+client.query(creaTablaProductos, (err, res) => {
+    console.log(err, res);
+    client.end();
+})
