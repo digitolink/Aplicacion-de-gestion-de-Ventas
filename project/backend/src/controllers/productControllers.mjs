@@ -8,12 +8,15 @@ export function postProductController(req, res){
         VALUES($1,$2,$3,$4,$5,$6)
         `,[req.body.rutaFoto, req.body.descripcion,req.body.nombre,
         req.body.precio, req.body.categorias, req.body.stock],
-        (error) =>{
+        (error, data) =>{
             if (error){
-                console.error(error);
+                console.error(error.stack);
                 res.sendStatus(500);
             }
-            else res.sendStatus(201);
+            else{
+                console.log(data.rows[0]);
+                res.sendStatus(201);
+            } 
         } )
 
     }catch(error){
@@ -32,7 +35,7 @@ export function getProductsController(req, res){
                 res.sendStatus(500);
             }
             else {
-                res.json(data);
+                res.json(data.rows);
             }
         } )
 

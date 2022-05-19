@@ -1,14 +1,14 @@
 import pg from "pg";
+import { config } from "dotenv";
 
-export const client = new pg.Client(
-    {
-        user: 'fallofxq',
-        host: 'tyke.db.elephantsql.com',
-        database: 'fallofxq',
-        password: 'NQJ73FFaUz0OqB3V932GUJAskV9bItaE',
-        port: 3211,
-      }
-)
+/**
+ * Initilize environment
+ */
+// Uses .env file environment if service not in production environment
+if (process.env.NODE_ENV !== 'production') config();
+
+
+export const client = new pg.Client(process.env.PGURL);
 client.connect();
 
 const creaTablaProductos=
@@ -22,10 +22,10 @@ productos(
     categorias VARCHAR(1000),
     stock INTEGER,
     fechaAlta TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    idProducto INTEGER PRIMARY KEY
+    idProducto SERIAL PRIMARY KEY
 )`
 
 client.query(creaTablaProductos, (err, res) => {
     console.log(err, res);
-    client.end();
+    //client.end();
 })

@@ -5,7 +5,7 @@ import {FichaProducto} from './components/fichaProducto/fichaProducto';
 function App() {
   return (
     <>
-    <FichaProducto id="1">
+    <FichaProducto identificador="1">
 
       
     </FichaProducto>

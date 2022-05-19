@@ -7,6 +7,10 @@ export function FichaProducto(props) {
     //useEffect con fetch para recibir la inf del producto, la respuesta se guarda en el state
     //conectar los state con los values de los input del formulario
     //si recibimos un id se llenan los campos del formulario
+
+    //crear endpoint para consulta de un solo producto para ver su ficha
+    //warning de "A component is changing an uncontrolled input..."" en consola del navegador:
+    //consultar página de ayuda que indica o ir quitando y probando los inputs para ver el que falla 
     
     const [rutaFoto, setRutaFoto] = useState("");
     const [nombre, setNombre] = useState("");
@@ -17,7 +21,7 @@ export function FichaProducto(props) {
 
     const[disableForm, setDisableForm] = useState(true);
 
-    const url = "postgres://fallofxq:NQJ73FFaUz0OqB3V932GUJAskV9bItaE@tyke.db.elephantsql.com/fallofxq"
+    const url = "http://localhost:3001/api/v0.1/products";
 
     function desbloquearHandler(event){
        setDisableForm(false);
@@ -50,9 +54,8 @@ export function FichaProducto(props) {
 
     useEffect(
         
-        async function InfProducto (){
-
-            const response = await fetch(
+         ()=> {
+           fetch(
                 url,
                 {
                     method: "GET",
@@ -61,8 +64,22 @@ export function FichaProducto(props) {
                     }
                 }
 
-            )
+            ).then(
+                (response) => {
+                    response.json().then(
+                        (data) => {
+                            setRutaFoto(data[0].rutaFoto !== null ? data[0].rutaFoto : undefined);
+                            console.log(data[0].nombre);
+                            setNombre(data[0].nombre);
+                            setDescripcion(data[0].descripcion);
+                            setCategorias(data[0].categorias !== null ? data[0].categorias : undefined); 
+                            setPrecio(data[0].precio !== null ? data[0].precio : undefined);
+                            setStock(data[0].stock !== null ? data[0].stock : undefined);
+                        }
+                    )
 
+                }
+            )
         },
         []
         
@@ -83,6 +100,7 @@ export function FichaProducto(props) {
                            id="rutafoto"
                            placeholder="Escribe la ruta de la foto" 
                            onChange={RutaFotoHandler}
+                           value={rutaFoto}
                            /><br />
 
                     <label htmlFor="Nombre">Nombre: </label><br />
@@ -91,14 +109,17 @@ export function FichaProducto(props) {
                            name="Nombre"
                            id="nombre"
                            placeholder="Escribe el nombre del producto"
-                           onChange={NombreHandler}/><br />
+                           onChange={NombreHandler}
+                           value={nombre}/>
+                           <br />
 
                     <label htmlFor="Descripcion">Descripción: </label><br />
                     <textarea disabled = {disableForm}
                               name="Descripcion"
                               id="descripcion"
                               placeholder=" Describe el producto"
-                              onChange={DescripcionHandler}>
+                              onChange={DescripcionHandler}
+                              value={descripcion}>
                     </textarea>
                     <br />
 
@@ -108,7 +129,9 @@ export function FichaProducto(props) {
                            name="Categorias"
                            id="categorias"
                            placeholder="categ. separadas por comas"
-                           onChange={CategoriasHandler}/><br />
+                           onChange={CategoriasHandler}
+                           value={categorias}/>
+                           <br />
 
                     <label htmlFor="Precio">Precio: </label><br />
                     <input disabled = {disableForm}
@@ -116,7 +139,9 @@ export function FichaProducto(props) {
                            name="Precio"
                            id="precio" 
                            placeholder="Escribe precio de venta"
-                           onChange={PrecioHandler}/><br />
+                           onChange={PrecioHandler}
+                           value={precio}/>
+                           <br />
 
                     <label htmlFor="Stock">Stock: </label><br />
                     <input disabled = {disableForm}
@@ -124,7 +149,9 @@ export function FichaProducto(props) {
                            name="Stock"
                            id="stock"
                            placeholder="Indica unidades disponibles"
-                           onChange={StockHandler}/><br />
+                           onChange={StockHandler}
+                           value={stock}/>
+                           <br />
 
                     <button type="button" id="desbloquear" onClick={desbloquearHandler}>Desbloquear</button>
                     <button type="button" id="grabar" onClick={grabarHandler}>Grabar</button>
