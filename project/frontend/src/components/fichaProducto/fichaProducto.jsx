@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./fichaProducto.module.css";
 import img from "./shoes.jpg"
 
@@ -18,17 +18,18 @@ export function FichaProducto(props) {
     const [categorias, setCategorias] = useState("");
     const [precio, setPrecio] = useState("");
     const [stock, setStock] = useState("");
+    const [grabar, setGrabar] = useState(false);
 
     const[disableForm, setDisableForm] = useState(true);
 
-    const url = "http://localhost:3001/api/v0.1/products";
+    const url = "http://localhost:3001/api/v0.1/product/1";
 
     function desbloquearHandler(event){
        setDisableForm(false);
     }
     
     function grabarHandler(event){
-    
+        setGrabar(!grabar);
     }
     
     function RutaFotoHandler(event){
@@ -50,6 +51,24 @@ export function FichaProducto(props) {
         setStock(event.target.value);
     }
     
+    useEffect(
+        () => {
+            ()=> {
+                fetch(
+                     url,
+                     {
+                         method: "POST",
+                         body:"" ,
+                         headers: {
+                             "Content-Type": "application/json"
+                         }
+                     }
+     
+                 )
+             },
+        [grabar]
+        },
+    )
 
 
     useEffect(
@@ -68,13 +87,13 @@ export function FichaProducto(props) {
                 (response) => {
                     response.json().then(
                         (data) => {
-                            setRutaFoto(data[0].rutaFoto !== null ? data[0].rutaFoto : undefined);
-                            console.log(data[0].nombre);
-                            setNombre(data[0].nombre);
-                            setDescripcion(data[0].descripcion);
-                            setCategorias(data[0].categorias !== null ? data[0].categorias : undefined); 
-                            setPrecio(data[0].precio !== null ? data[0].precio : undefined);
-                            setStock(data[0].stock !== null ? data[0].stock : undefined);
+                            setRutaFoto(data.rutaFoto);
+                            console.log(data.nombre);
+                            setNombre(data.nombre);
+                            setDescripcion(data.descripcion);
+                            setCategorias(data.categorias); 
+                            setPrecio(data.precio);
+                            setStock(data.stock);
                         }
                     )
 

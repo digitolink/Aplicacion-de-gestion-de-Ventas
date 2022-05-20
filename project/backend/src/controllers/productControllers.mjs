@@ -44,3 +44,24 @@ export function getProductsController(req, res){
         res.send("No fue posible listar productos de la base de datos");
     }
 }
+
+export function getProductController(req,res){    
+        try{
+            client.query(`
+            SELECT * FROM productos WHERE idProducto=
+            `+parseInt(req.params.id),
+            
+            (error,data) => {
+                if (error){
+                    console.error(error);
+                    res.send("Hubo un error al intentar listar");
+                }
+                else res.json(data.rows[0]);
+            }
+            )
+    }catch(error){
+        console.error(error);
+        res.send("No fue posible listar el producto de la base de datos");
+    }
+
+}

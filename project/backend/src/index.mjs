@@ -1,5 +1,5 @@
 import express from "express";
-import { getProductsController, postProductController } from "./controllers/productControllers.mjs";
+import { getProductController, getProductsController, postProductController } from "./controllers/productControllers.mjs";
 import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
 const PORT = 3001;
@@ -14,7 +14,7 @@ try {
     expressInstance.use(express.json());
     expressInstance.post("/api/v0.1/product",validatorFactory(productSchema), postProductController);
     expressInstance.get("/api/v0.1/products", getProductsController);
-
+    expressInstance.get("/api/v0.1/product/:id", getProductController);
 
 }catch(error){
     console.error(error);

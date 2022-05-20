@@ -4,6 +4,7 @@
 }
 
 .datosProducto{
+    margin: 10px;
     flex-grow: 2;
     background-color: rgb(202, 155, 155);
 }
@@ -34,7 +35,7 @@
 
 main{
     display: flex;
-    background-color: red;
+    background-color: rgb(202, 155, 155);
 
 }
 .tamanoFoto{
