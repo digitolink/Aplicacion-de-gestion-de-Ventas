@@ -1,6 +1,8 @@
 .foto{
     flex-grow: 1;
     background-color: cadetblue;
+    margin: 10px;
+
 }
 
 .datosProducto{
@@ -39,6 +41,6 @@ main{
 
 }
 .tamanoFoto{
-    height: 100px;
+    height: 150px;
     width: auto;
 }

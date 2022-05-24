@@ -18,7 +18,7 @@ productos(
     rutaFoto VARCHAR(1000),
     descripcion VARCHAR(1000),
     nombre VARCHAR(100) NOT NULL,
-    precio INTEGER,
+    precio NUMERIC,
     categorias VARCHAR(1000),
     stock INTEGER,
     fechaAlta TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,

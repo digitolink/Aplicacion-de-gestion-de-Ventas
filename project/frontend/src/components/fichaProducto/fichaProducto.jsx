@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./fichaProducto.module.css";
-import img from "./shoes.jpg"
+//import img from "./shoes.jpg"
 
 export function FichaProducto(props) {
     //(ver ejemplo del chat) 
@@ -12,28 +12,71 @@ export function FichaProducto(props) {
     //warning de "A component is changing an uncontrolled input..."" en consola del navegador:
     //consultar página de ayuda que indica o ir quitando y probando los inputs para ver el que falla 
     
-    const [rutaFoto, setRutaFoto] = useState("");
+    const [foto, setFoto] = useState("");
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [categorias, setCategorias] = useState("");
     const [precio, setPrecio] = useState("");
     const [stock, setStock] = useState("");
-    const [grabar, setGrabar] = useState(false);
+    const [encodedFile, setEncodedFile] = useState("");
 
     const[disableForm, setDisableForm] = useState(true);
 
     const url = "http://localhost:3001/api/v0.1/product/1";
+    const urlPostProduct = "http://localhost:3001/api/v0.1/product";
+    const urlPostImage = "http://localhost:3001/upload/";
 
-    function desbloquearHandler(event){
-       setDisableForm(false);
+    const data= {
+        foto: "",
+        descripcion:"",
+        nombre:"",
+        precio:0,
+        categorias:"",
+        stock:0,
+        fechaAlta: undefined
+    };
+
+    function desbloquearHandler(){
+       setDisableForm(!disableForm);
     }
     
     function grabarHandler(event){
-        setGrabar(!grabar);
+        
+        data.foto = foto;
+        data.nombre = nombre;
+        data.descripcion = descripcion;
+        data.categorias = categorias; 
+        data.precio = parseFloat(precio);
+        data.stock = parseInt(stock);
+        fetch(
+            urlPostProduct,
+             {
+                 method: "POST",
+                 body: JSON.stringify(data) ,
+                 headers: {
+                     "Content-Type": "application/json"
+                 }
+             }
+
+         )
+         alert("Producto añadido a la base de datos")
     }
     
-    function RutaFotoHandler(event){
-        setRutaFoto(event.target.value);
+    function FotoHandler(event){
+        //setFoto(event.target.value);
+        //setEncodedFile(URL.createObjectURL(event.target.files[0]));
+        fetch(
+            urlPostImage,
+             {
+                 method: "POST",
+                 body: event.target.files[0] 
+             }
+
+         )
+         //TODO: debemos guardar el nombre del fichero en la base de datos
+         //para referenciarlo cuando lo vayamos a descargar para mostrarlo
+         //Llamamos al endpoint que obtiene el id de la base de datos
+    
     }
     function NombreHandler(event){
         setNombre(event.target.value);
@@ -51,24 +94,6 @@ export function FichaProducto(props) {
         setStock(event.target.value);
     }
     
-    useEffect(
-        () => {
-            ()=> {
-                fetch(
-                     url,
-                     {
-                         method: "POST",
-                         body:"" ,
-                         headers: {
-                             "Content-Type": "application/json"
-                         }
-                     }
-     
-                 )
-             },
-        [grabar]
-        },
-    )
 
 
     useEffect(
@@ -87,7 +112,7 @@ export function FichaProducto(props) {
                 (response) => {
                     response.json().then(
                         (data) => {
-                            setRutaFoto(data.rutaFoto);
+                            setFoto(data.foto);
                             console.log(data.nombre);
                             setNombre(data.nombre);
                             setDescripcion(data.descripcion);
@@ -108,18 +133,20 @@ export function FichaProducto(props) {
     return (
         <main className={styles.main}>
             <section className = {styles.foto} >
-                <img className = {styles.tamanoFoto} src={img} alt="zapatos de muestra" />
+                {/*<img className = {styles.tamanoFoto} src={img} alt="zapatos de muestra" />
+                <input type="file" name="ficheroNombre" id="ficheroId"></input>*/}
+                <img src={encodedFile} className={styles.tamanoFoto} alt="Imagen cargada"></img>
             </section>
             <section className={styles.datosProducto}>
                 <form id="formulario">
-                    <label htmlFor="RutaFoto">Ruta foto: </label><br />
+                    <label htmlFor="Foto">Enviar imagen: </label><br />
                     <input disabled = {disableForm}
-                           type="text"
-                           name="RutaFoto"
-                           id="rutafoto"
+                           type="file"
+                           name="Foto"
+                           id="foto"
                            placeholder="Escribe la ruta de la foto" 
-                           onChange={RutaFotoHandler}
-                           value={rutaFoto}
+                           onChange={FotoHandler}
+                           value={foto}
                            /><br />
 
                     <label htmlFor="Nombre">Nombre: </label><br />
@@ -172,7 +199,7 @@ export function FichaProducto(props) {
                            value={stock}/>
                            <br />
 
-                    <button type="button" id="desbloquear" onClick={desbloquearHandler}>Desbloquear</button>
+                    <button type="button" id="desbloquear" onClick={desbloquearHandler}>Modificar/Bloquear</button>
                     <button type="button" id="grabar" onClick={grabarHandler}>Grabar</button>
 
                 </form>
