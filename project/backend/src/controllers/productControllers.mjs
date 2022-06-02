@@ -1,3 +1,4 @@
+import { createWriteStream } from "fs";
 import { client } from "../db.mjs";
 
 export function postProductController(req, res){
@@ -22,6 +23,19 @@ export function postProductController(req, res){
     }catch(error){
         console.error(error);
         res.send("No fue posible añadir el producto a la base de datos");
+    }
+}
+
+export function postImageController(req, res){
+    //registramos la imagen en el servidor con un nombre distinto
+    try {
+        const imgId = Date.now();
+        const file = createWriteStream("./uploads/" + imgId + ".jpg");
+        req.pipe(file);
+        res.send("fichero subido");
+    } catch (error) {
+        console.log(error);
+        res.send("Error al intentar subir el archivo de imagen")
     }
 }
 

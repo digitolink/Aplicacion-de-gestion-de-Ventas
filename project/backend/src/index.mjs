@@ -1,15 +1,25 @@
-import { resolveAny } from "dns";
 import express from "express";
-import { createWriteStream } from "fs";
-
 import { getProductController, getProductsController, postProductController } from "./controllers/productControllers.mjs";
 import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
+import aws from "aws-sdk";
+import { busboyParserFactory } from "./middleware/busboyParserFactory.mjs";
+import { s3uploaderFactory } from "./controllers/s3uploaderFactory.mjs";
+
 const PORT = 3001;
 //crear la instancia de express y lanza el servidor
 //crear la api con la instancia de express
 
 try {
+    
+    const s3client = new aws.S3({
+        apiVersion: process.env.S3_API_VERSION,
+        endpoint: process.env.S3_ENDPOINT,
+        signatureVersion: process.env.S3_SIGNATURE_VERSION
+    })
+    const s3Uploader = s3uploaderFactory(s3client, process.env.s3_BUCKET);
+    const busboyParser = busboyParserFactory(s3Uploader);
+    
     const expressInstance = express();
     expressInstance.listen(PORT, () => {
         console.log("Express ejecutándose...");
@@ -22,18 +32,7 @@ try {
     expressInstance.use("/images/", express.static("./uploads/"));
 
     //"/upload/" será la ruta para las peticiones post
-    expressInstance.post("/upload", (req, res) => {
-        //registramos la imagen en el servidor con un nombre distinto
-        try {
-            const imgId = Date.now();
-            const file = createWriteStream("./uploads/" + imgId + ".jpg");
-            req.pipe(file);
-            res.send("fichero subido");
-        } catch (error) {
-            console.log(error);
-            res.send("Error al intentar subir el archivo de imagen")
-        }
-    })
+    expressInstance.post("/upload", busboyParser)
 
     expressInstance.post("/api/v0.1/product", validatorFactory(productSchema), postProductController);
     expressInstance.get("/api/v0.1/products", getProductsController);

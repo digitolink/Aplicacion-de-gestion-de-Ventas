@@ -12,12 +12,12 @@ export function FichaProducto(props) {
     //warning de "A component is changing an uncontrolled input..."" en consola del navegador:
     //consultar página de ayuda que indica o ir quitando y probando los inputs para ver el que falla 
     
-    const [foto, setFoto] = useState("");
-    const [nombre, setNombre] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [categorias, setCategorias] = useState("");
-    const [precio, setPrecio] = useState("");
-    const [stock, setStock] = useState("");
+    const [foto, setFoto] = useState(null);
+    const [nombre, setNombre] = useState(null);
+    const [descripcion, setDescripcion] = useState(null);
+    const [categorias, setCategorias] = useState(null);
+    const [precio, setPrecio] = useState(null);
+    const [stock, setStock] = useState(null);
     const [encodedFile, setEncodedFile] = useState("");
 
     const[disableForm, setDisableForm] = useState(true);
@@ -42,12 +42,12 @@ export function FichaProducto(props) {
     
     function grabarHandler(event){
         
-        data.foto = foto;
-        data.nombre = nombre;
-        data.descripcion = descripcion;
-        data.categorias = categorias; 
-        data.precio = parseFloat(precio);
-        data.stock = parseInt(stock);
+        if (foto!=null) data.foto = foto;
+        if (nombre!=null) data.nombre = nombre;
+        if (descripcion!=null) data.descripcion = descripcion;
+        if (categorias!=null) data.categorias = categorias; 
+        if (precio!=null) data.precio = parseFloat(precio);
+        if (stock!=null) data.stock = parseInt(stock);
         fetch(
             urlPostProduct,
              {
@@ -147,6 +147,7 @@ export function FichaProducto(props) {
                            placeholder="Escribe la ruta de la foto" 
                            onChange={FotoHandler}
                            value={foto}
+                           multiple
                            /><br />
 
                     <label htmlFor="Nombre">Nombre: </label><br />
