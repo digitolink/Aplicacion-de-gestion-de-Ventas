@@ -12,13 +12,13 @@ export function FichaProducto(props) {
     //warning de "A component is changing an uncontrolled input..."" en consola del navegador:
     //consultar página de ayuda que indica o ir quitando y probando los inputs para ver el que falla 
     
-    const [foto, setFoto] = useState(null);
     const [nombre, setNombre] = useState(null);
     const [descripcion, setDescripcion] = useState(null);
     const [categorias, setCategorias] = useState(null);
     const [precio, setPrecio] = useState(null);
     const [stock, setStock] = useState(null);
     const [encodedFile, setEncodedFile] = useState("");
+    const [newFoto, setNewFoto] = useState();
 
     const[disableForm, setDisableForm] = useState(true);
 
@@ -42,7 +42,7 @@ export function FichaProducto(props) {
     
     function grabarHandler(event){
         
-        if (foto!=null) data.foto = foto;
+        if (newFoto) data.foto = Date.now().toString()+newFoto.name;
         if (nombre!=null) data.nombre = nombre;
         if (descripcion!=null) data.descripcion = descripcion;
         if (categorias!=null) data.categorias = categorias; 
@@ -59,20 +59,28 @@ export function FichaProducto(props) {
              }
 
          )
+         sendFoto(data.foto, newFoto)
          alert("Producto añadido a la base de datos")
     }
     
-    function FotoHandler(event){
-        //setFoto(event.target.value);
-        //setEncodedFile(URL.createObjectURL(event.target.files[0]));
+    function sendFoto(fotoName, fotoBlob) {
         fetch(
-            urlPostImage,
+            urlPostImage+fotoName,
              {
                  method: "POST",
-                 body: event.target.files[0] 
+                 body: fotoBlob
              }
 
          )
+
+    }
+
+    function FotoHandler(event){
+        //setFoto(event.target.value);
+        //setEncodedFile(URL.createObjectURL(event.target.files[0]));
+        console.log(event.target.files);
+        setNewFoto(event.target.files[0]);
+
          //TODO: debemos guardar el nombre del fichero en la base de datos
          //para referenciarlo cuando lo vayamos a descargar para mostrarlo
          //Llamamos al endpoint que obtiene el id de la base de datos
@@ -112,7 +120,6 @@ export function FichaProducto(props) {
                 (response) => {
                     response.json().then(
                         (data) => {
-                            setFoto(data.foto);
                             console.log(data.nombre);
                             setNombre(data.nombre);
                             setDescripcion(data.descripcion);
@@ -146,7 +153,6 @@ export function FichaProducto(props) {
                            id="foto"
                            placeholder="Escribe la ruta de la foto" 
                            onChange={FotoHandler}
-                           value={foto}
                            multiple
                            /><br />
 
