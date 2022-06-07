@@ -121,6 +121,7 @@ export function FichaProducto(props) {
         
          ()=> {
            fetch(
+               //TODO: esta url esta hardcodeada, hay que obtenerla del props
                 url,
                 {
                     method: "GET",

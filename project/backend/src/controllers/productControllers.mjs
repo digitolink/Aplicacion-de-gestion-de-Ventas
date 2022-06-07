@@ -110,9 +110,9 @@ export function getProductController(req, res) {
                     res.send("Hubo un error al intentar listar");
                 }
                 else {
-                    const product= data.rows[0];
+                    const product= data.rows[0] || [];
                     product.rutafoto="https://ipfs.filebase.io/ipfs/"+product.rutafoto;
-                    res.json(data.rows[0]);
+                    res.json(product);
             }
         }
         )
