@@ -6,7 +6,7 @@ export function postProductController(req, res) {
         INSERT INTO productos (rutaFoto, descripcion,nombre,
         precio, categorias, stock)
         VALUES($1,$2,$3,$4,$5,$6)
-        `, [req.body.rutaFoto, req.body.descripcion, req.body.nombre,
+        `, [req.body.foto, req.body.descripcion, req.body.nombre,
         req.body.precio, req.body.categorias, req.body.stock],
             (error, data) => {
                 if (error) {
@@ -52,6 +52,21 @@ export function uploadImageController(s3client) {
             })
             const result = await s3Response.promise()
 
+            const headers = await s3client.headObject({
+                Key: s3ObjectKey,
+                Bucket: process.env.S3_BUCKET
+            }).promise()
+
+            // el proceso sería inverso, primero obtener el cid pero hemos subido la imagen primero
+            // y sustituído el nombre por el cid al final del proceso 
+            client.query(
+                "UPDATE productos SET rutafoto=$1 WHERE rutafoto=$2",
+                [headers.Metadata.cid, s3ObjectKey],
+                (err, data)=>{
+                    if (err) throw err
+                }
+            )
+
             res.sendStatus(201);
 
 
@@ -94,8 +109,12 @@ export function getProductController(req, res) {
                     console.error(error);
                     res.send("Hubo un error al intentar listar");
                 }
-                else res.json(data.rows[0]);
+                else {
+                    const product= data.rows[0];
+                    product.rutafoto="https://ipfs.filebase.io/ipfs/"+product.rutafoto;
+                    res.json(data.rows[0]);
             }
+        }
         )
     } catch (error) {
         console.error(error);

@@ -28,12 +28,15 @@ try {
     //"/images/" será la ruta para las peticiones get
     //"./uploads/" será la ruta de la carpeta física en el servidor
     //desde donde esté el package.json, se debe crear previamente
-    //expressInstance.use("/images/", express.static("./uploads/"));
+    expressInstance.use("/images/", express.static("./uploads/"));
 
     //"/upload/" será la ruta para las peticiones post
+    //este endpoint envía el fichero de imagen a s3
     expressInstance.post("/upload/:s3Key", uploadImageController(s3client));
-
+    
+    //este endpoint envía los datos del formulario a la base de datos
     expressInstance.post("/api/v0.1/product", validatorFactory(productSchema), postProductController);
+
     expressInstance.get("/api/v0.1/products", getProductsController);
     expressInstance.get("/api/v0.1/product/:id", getProductController);
 

@@ -19,6 +19,7 @@ export function FichaProducto(props) {
     const [stock, setStock] = useState(null);
     const [encodedFile, setEncodedFile] = useState("");
     const [newFoto, setNewFoto] = useState();
+    const [rutaFoto, setRutaFoto] = useState();
 
     const[disableForm, setDisableForm] = useState(true);
 
@@ -40,14 +41,22 @@ export function FichaProducto(props) {
        setDisableForm(!disableForm);
     }
     
+    /**
+     * Envía el formulario y la foto
+     * @param {*} event 
+     */
     function grabarHandler(event){
         
+        //si hemos seleccionado una foto en el formulario, 
+        //le asiganmos un nombre basado en el timestamp y su nombre físico 
         if (newFoto) data.foto = Date.now().toString()+newFoto.name;
         if (nombre!=null) data.nombre = nombre;
         if (descripcion!=null) data.descripcion = descripcion;
         if (categorias!=null) data.categorias = categorias; 
         if (precio!=null) data.precio = parseFloat(precio);
         if (stock!=null) data.stock = parseInt(stock);
+        
+        //este fetch envía los datos del formulario a la base de datos
         fetch(
             urlPostProduct,
              {
@@ -61,8 +70,10 @@ export function FichaProducto(props) {
          )
          sendFoto(data.foto, newFoto)
          alert("Producto añadido a la base de datos")
+
     }
     
+    //este fetch envía la imagen a s3
     function sendFoto(fotoName, fotoBlob) {
         fetch(
             urlPostImage+fotoName,
@@ -79,6 +90,8 @@ export function FichaProducto(props) {
         //setFoto(event.target.value);
         //setEncodedFile(URL.createObjectURL(event.target.files[0]));
         console.log(event.target.files);
+
+
         setNewFoto(event.target.files[0]);
 
          //TODO: debemos guardar el nombre del fichero en la base de datos
@@ -126,6 +139,7 @@ export function FichaProducto(props) {
                             setCategorias(data.categorias); 
                             setPrecio(data.precio);
                             setStock(data.stock);
+                            setRutaFoto(data.rutafoto);
                         }
                     )
 
@@ -142,7 +156,7 @@ export function FichaProducto(props) {
             <section className = {styles.foto} >
                 {/*<img className = {styles.tamanoFoto} src={img} alt="zapatos de muestra" />
                 <input type="file" name="ficheroNombre" id="ficheroId"></input>*/}
-                <img src={encodedFile} className={styles.tamanoFoto} alt="Imagen cargada"></img>
+                <img src={rutaFoto} className={styles.tamanoFoto} alt="Imagen cargada"></img>
             </section>
             <section className={styles.datosProducto}>
                 <form id="formulario">
