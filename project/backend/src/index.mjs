@@ -1,5 +1,5 @@
 import express from "express";
-import { getProductController, getProductsController, postProductController, uploadImageController } from "./controllers/productControllers.mjs";
+import { getProductController, getProductsController, getProductsFilterController, postProductController, uploadImageController } from "./controllers/productControllers.mjs";
 import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
 import aws from "aws-sdk";
@@ -39,6 +39,11 @@ try {
 
     expressInstance.get("/api/v0.1/products", getProductsController);
     expressInstance.get("/api/v0.1/product/:id", getProductController);
+
+    //endpoint para obtener un listado de productos, filtrado por 
+    //categorías, precio mínimo y máximo y página
+
+    expressInstance.get("/api/v0.1/productFilter/", getProductsFilterController);
 
 
 } catch (error) {

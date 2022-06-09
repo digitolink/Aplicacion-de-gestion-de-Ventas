@@ -1,0 +1,8 @@
+.estilotabla{
+    background-color: rgb(113, 198, 201);
+    border: solid 2px;
+    display:flex;
+    justify-content: center;
+    font-weight: bold;
+    
+}

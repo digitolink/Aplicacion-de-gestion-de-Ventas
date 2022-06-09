@@ -62,7 +62,7 @@ export function uploadImageController(s3client) {
             client.query(
                 "UPDATE productos SET rutafoto=$1 WHERE rutafoto=$2",
                 [headers.Metadata.cid, s3ObjectKey],
-                (err, data)=>{
+                (err, data) => {
                     if (err) throw err
                 }
             )
@@ -110,15 +110,64 @@ export function getProductController(req, res) {
                     res.send("Hubo un error al intentar listar");
                 }
                 else {
-                    const product= data.rows[0] || [];
-                    product.rutafoto="https://ipfs.filebase.io/ipfs/"+product.rutafoto;
+                    const product = data.rows[0] || [];
+                    product.rutafoto = "https://ipfs.filebase.io/ipfs/" + product.rutafoto;
                     res.json(product);
+                }
             }
-        }
         )
     } catch (error) {
         console.error(error);
         res.send("No fue posible listar el producto de la base de datos");
     }
 
+}
+
+export function getProductsFilterController(req, res) {
+    try {
+        const cat = req.query.cat;
+        const pmin = req.query.pmin;
+        const pmax = req.query.pmax;
+        const page = req.query.page;
+
+        //construímos la query de SQL con los parámetros de la
+        //query de la URL pasada al fetch
+        let sqlQuery = "SELECT * FROM productos WHERE ";
+
+        if (cat) {
+            sqlQuery = sqlQuery + "categoria=" + cat;
+        }
+        if (page) {
+            sqlQuery = sqlQuery + " AND page=" + page;
+        }
+        if (pmax && pmin) {
+            sqlQuery = sqlQuery + " AND precio BETWEEN " + pmin +
+                " AND " + pmax;
+        }
+        else {
+            if (pmin && !pmax) {
+                sqlQuery = sqlQuery + " AND precio>=" + pmin;
+
+            }
+            else {
+                sqlQuery = sqlQuery + " AND precio<=" + pmax;
+            }
+        }
+
+        //ejecutamos la query de SQL y enviamos el resultado de la petición
+        client.query(sqlQuery, (error, data) => {
+            if (error) {
+                console.error(error);
+                res.send("Hubo un error al listar el filtro de productos");
+            }
+            else {
+                res.json(data);
+            }
+
+        })
+
+    } catch (error) {
+        console.error(error);
+        res.send("No fue posible listar los productos de la base de datos");
+    }
 }

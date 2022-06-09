@@ -1,14 +1,18 @@
 import './App.css';
 import {FichaProducto} from './components/fichaProducto/fichaProducto';
+import { ListadoProductos } from './components/listadoProductos/listadoProductos';
 
 
 function App() {
   return (
     <>
-    <FichaProducto identificador="59">
+    <ListadoProductos>
+    </ListadoProductos>   
 
-      
+    {/* 
+    <FichaProducto identificador="59">
     </FichaProducto>
+    */}
     
     </>
     
