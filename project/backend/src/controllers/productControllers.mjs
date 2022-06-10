@@ -163,7 +163,10 @@ export function getProductsFilterController(req, res) {
                 res.send("Hubo un error al listar el filtro de productos");
             }
             else {
-                res.json(data);
+                res.json(data); //convierte a json el array data
+                //(en cambio en el fetch del frontend el método .json convertirá
+                //este json en el formato original de data (array) para poder hacer 
+                //.map sobre el resultado y mostarr las TableRow.
             }
 
         })
