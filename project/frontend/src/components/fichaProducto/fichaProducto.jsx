@@ -221,8 +221,8 @@ export function FichaProducto(props) {
                            value={stock}/>
                            <br />
 
-                    <button type="button" id="desbloquear" onClick={desbloquearHandler}>Modificar/Bloquear</button>
-                    <button type="button" id="grabar" onClick={grabarHandler}>Grabar</button>
+                    <button type="button" id="desbloquear" onClick={desbloquearHandler}>Desbloquear formulario</button>
+                    <button type="button" id="grabar" onClick={grabarHandler}>Grabar Producto</button>
 
                 </form>
 

@@ -16,6 +16,7 @@ export function ListadoProductos() {
                 <td>Categoría</td>
             </th>
             
+            
 
 
 

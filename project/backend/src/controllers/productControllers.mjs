@@ -152,6 +152,8 @@ export function getProductsFilterController(req, res) {
             else {
                 sqlQuery = sqlQuery + " AND precio<=" + pmax;
             }
+        sqlQuery = sqlQuery + " ORDER BY nombre"+
+                              " LIMIT 5 OFFSET " + (5*page).toString(); //Paginacion 
         }
 
         //ejecutamos la query de SQL y enviamos el resultado de la petición

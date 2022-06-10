@@ -1,0 +1,10 @@
+export function TdComponent() {
+    return(
+        <>
+            
+        
+        </>
+
+    )
+
+}

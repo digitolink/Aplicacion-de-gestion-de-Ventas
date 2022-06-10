@@ -9,10 +9,10 @@ function App() {
     <ListadoProductos>
     </ListadoProductos>   
 
-    {/* 
+     
     <FichaProducto identificador="59">
     </FichaProducto>
-    */}
+    
     
     </>
     

@@ -3,6 +3,6 @@
     border: solid 2px;
     display:flex;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
-    
 }
