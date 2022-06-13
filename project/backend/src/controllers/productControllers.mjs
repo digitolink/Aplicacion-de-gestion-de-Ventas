@@ -132,7 +132,9 @@ export function getProductsFilterController(req, res) {
 
         //construímos la query de SQL con los parámetros de la
         //query de la URL pasada al fetch
-        let sqlQuery = "SELECT * FROM productos WHERE ";
+        let sqlQuery = "SELECT * FROM productos";
+        
+        /*let sqlQuery = "SELECT * FROM productos WHERE ";
 
         if (cat) {
             sqlQuery = sqlQuery + "categoria=" + cat;
@@ -155,7 +157,7 @@ export function getProductsFilterController(req, res) {
         sqlQuery = sqlQuery + " ORDER BY nombre"+
                               " LIMIT 5 OFFSET " + (5*page).toString(); //Paginacion 
         }
-
+        */
         //ejecutamos la query de SQL y enviamos el resultado de la petición
         client.query(sqlQuery, (error, data) => {
             if (error) {
@@ -166,7 +168,7 @@ export function getProductsFilterController(req, res) {
                 res.json(data); //convierte a json el array data
                 //(en cambio en el fetch del frontend el método .json convertirá
                 //este json en el formato original de data (array) para poder hacer 
-                //.map sobre el resultado y mostarr las TableRow.
+                //.map sobre el resultado y mostrar las TableRow.
             }
 
         })
