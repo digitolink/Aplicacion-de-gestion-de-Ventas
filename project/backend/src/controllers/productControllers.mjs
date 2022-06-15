@@ -132,7 +132,7 @@ export function getProductsFilterController(req, res) {
 
         //construímos la query de SQL con los parámetros de la
         //query de la URL pasada al fetch
-        let sqlQuery = "SELECT * FROM productos";
+        let sqlQuery = "SELECT idProducto, nombre, precio, categorias FROM productos";
         
         /*let sqlQuery = "SELECT * FROM productos WHERE ";
 
@@ -165,7 +165,7 @@ export function getProductsFilterController(req, res) {
                 res.send("Hubo un error al listar el filtro de productos");
             }
             else {
-                res.json(data); //convierte a json el array data
+                res.json(data.rows); //convierte a json el array data
                 //(en cambio en el fetch del frontend el método .json convertirá
                 //este json en el formato original de data (array) para poder hacer 
                 //.map sobre el resultado y mostrar las TableRow.

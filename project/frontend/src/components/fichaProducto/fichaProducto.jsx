@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./fichaProducto.module.css";
 //import img from "./shoes.jpg"
 
@@ -21,9 +22,11 @@ export function FichaProducto(props) {
     const [newFoto, setNewFoto] = useState();
     const [rutaFoto, setRutaFoto] = useState();
 
+    const params =useParams();
+
     const[disableForm, setDisableForm] = useState(true);
 
-    const url = "http://localhost:3001/api/v0.1/product/1";
+    const url = "http://localhost:3001/api/v0.1/product/"+params.id;
     const urlPostProduct = "http://localhost:3001/api/v0.1/product";
     const urlPostImage = "http://localhost:3001/upload/";
 

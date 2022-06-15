@@ -1,8 +1,11 @@
 .estilotabla{
-    background-color: rgb(113, 198, 201);
+    background-color: rgb(140, 228, 231);
     border: solid 2px;
-    display:flex;
+    /*display:flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
     font-weight: bold;
+}
+th,td{
+    border:1px solid black;
 }
