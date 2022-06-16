@@ -1,0 +1,23 @@
+.barra{
+    display:flex;
+    font-weight: bold;
+    color:green;
+
+}
+.logotipo{
+    width: 100px;
+    height: auto; 
+}
+.lista{
+    list-style-type:none;
+    display:flex;
+    justify-content: space-around;
+}
+.menu{
+    width: 100%;
+}
+.login{
+    width: 50px; 
+    margin-right: 50px;
+    border: solid
+}
