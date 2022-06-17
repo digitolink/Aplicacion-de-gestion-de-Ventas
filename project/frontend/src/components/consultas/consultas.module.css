@@ -1,0 +1,19 @@
+.datosProducto input {
+    border-radius: 25px;
+    margin-bottom: 25px;
+    width:300px;
+    padding:5px;
+}
+
+.datosProducto button {
+    border-radius: 5px;
+    border:solid 10 px;
+    margin-bottom: 25px;
+    margin-right: 100px;
+    background-color:beige;
+}
+.datosProducto{
+    margin: 10px;
+    background-color: rgb(202, 155, 155);
+    height: 85vh;
+}

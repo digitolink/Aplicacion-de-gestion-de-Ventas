@@ -3,6 +3,7 @@ import './App.css';
 import { VistaListado } from "./vistas/vistaListado/vistaListado.jsx";
 import { VistaGrabarProducto } from "./vistas/vistaGrabarProducto/vistaGrabarProducto.jsx";
 import { BarraNav } from './components/barranav/barranav';
+import { VistaConsultas } from './vistas/vistaConsultas/vistaConsultas';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/fichaproducto/" element={<VistaGrabarProducto />}>
           <Route path=":id" element={<VistaGrabarProducto />} />
         </Route>
+        <Route path="/busquedaproducto" element={<VistaConsultas />}/>
       </Routes>
 
     </>

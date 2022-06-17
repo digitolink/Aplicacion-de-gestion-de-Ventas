@@ -132,12 +132,13 @@ export function getProductsFilterController(req, res) {
 
         //construímos la query de SQL con los parámetros de la
         //query de la URL pasada al fetch
-        let sqlQuery = "SELECT idProducto, nombre, precio, categorias FROM productos";
-        
-        /*let sqlQuery = "SELECT * FROM productos WHERE ";
+        //let sqlQuery = "SELECT idProducto, nombre, precio, categorias FROM productos";
+
+
+        let sqlQuery = "SELECT * FROM productos WHERE ";
 
         if (cat) {
-            sqlQuery = sqlQuery + "categoria=" + cat;
+            sqlQuery = sqlQuery + "categoria='" + cat + "'";
         }
         if (page) {
             sqlQuery = sqlQuery + " AND page=" + page;
@@ -154,10 +155,11 @@ export function getProductsFilterController(req, res) {
             else {
                 sqlQuery = sqlQuery + " AND precio<=" + pmax;
             }
-        sqlQuery = sqlQuery + " ORDER BY nombre"+
-                              " LIMIT 5 OFFSET " + (5*page).toString(); //Paginacion 
+        if (cat||page||pmax||pmin)
+            sqlQuery = sqlQuery + " ORDER BY nombre"+
+                              " LIMIT 5 OFFSET " + (5*parseInt(page)).toString(); //Paginacion 
         }
-        */
+        
         //ejecutamos la query de SQL y enviamos el resultado de la petición
         client.query(sqlQuery, (error, data) => {
             if (error) {
@@ -176,5 +178,15 @@ export function getProductsFilterController(req, res) {
     } catch (error) {
         console.error(error);
         res.send("No fue posible listar los productos de la base de datos");
+    }
+}
+
+export function postProductsFilterController(req,res){
+    try{
+
+
+    }catch(error){
+        console.error(error);
+        res.send("No fue posible enviar los parámetros de búsqueda al servidor")
     }
 }
