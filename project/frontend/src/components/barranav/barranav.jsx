@@ -18,7 +18,7 @@ export function BarraNav() {
                     <ul className={styles.lista}>
                         <li><Link to={"/fichaproducto"} alt="alta de producto">Altas</Link></li>
                         <li><Link to={"/bajaproducto"} alt="baja de producto">Bajas</Link></li>
-                        <li><Link to={"/busquedaproducto"} alt="busqueda de productos">Buscar productos</Link></li>
+                        <li><Link to={"/busquedaproducto"} alt="busqueda de productos">Buscar</Link></li>
                     </ul>
                 </div>
                 <div>
