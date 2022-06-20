@@ -126,9 +126,10 @@ export function getProductController(req, res) {
 export function getProductsFilterController(req, res) {
     try {
         const cat = req.query.cat;
-        const pmin = req.query.pmin;
-        const pmax = req.query.pmax;
-        const page = req.query.page;
+        const pmin = parseInt(req.query.pmin);
+        const pmax = parseInt(req.query.pmax);
+        const page = parseInt(req.query.page);
+        const nombre = req.query.nombre;
 
         //construímos la query de SQL con los parámetros de la
         //query de la URL pasada al fetch
@@ -136,30 +137,65 @@ export function getProductsFilterController(req, res) {
 
 
         let sqlQuery = "SELECT * FROM productos WHERE ";
+        let soyPrimero = true;
 
-        if (cat) {
-            sqlQuery = sqlQuery + "categoria='" + cat + "'";
+        if (nombre!=undefined) {
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "nombre='" + nombre + "'";
+                soyPrimero = !soyPrimero;
+            }
+            else
+                sqlQuery = sqlQuery + " AND nombre='" + nombre + "'";
+        }
+        if (cat!=undefined) {
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "categorias='" + cat + "'";
+                soyPrimero = !soyPrimero;
+            }
+            else
+                sqlQuery = sqlQuery + " AND categorias='" + cat + "'";
         }
         if (page) {
-            sqlQuery = sqlQuery + " AND page=" + page;
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "page=" + page;
+                soyPrimero = !soyPrimero;
+            }
+            else
+                sqlQuery = sqlQuery + " AND page=" + page;
+
         }
         if (pmax && pmin) {
-            sqlQuery = sqlQuery + " AND precio BETWEEN " + pmin +
-                " AND " + pmax;
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "precio BETWEEN " + pmin +
+                    " AND " + pmax;
+                soyPrimero = !soyPrimero;
+            }
+            else
+                sqlQuery = sqlQuery + " AND precio BETWEEN " + pmin +
+                    " AND " + pmax;
         }
         else {
             if (pmin && !pmax) {
-                sqlQuery = sqlQuery + " AND precio>=" + pmin;
-
+                if (soyPrimero) {
+                    sqlQuery = sqlQuery + "precio>=" + pmin;
+                    soyPrimero = !soyPrimero;
+                }
+                else
+                    sqlQuery = sqlQuery + " AND precio>=" + pmin;
             }
             else {
-                sqlQuery = sqlQuery + " AND precio<=" + pmax;
+                if (soyPrimero) {
+                    sqlQuery = sqlQuery + "precio<=" + pmax;
+                    soyPrimero = !soyPrimero;
+                }
+                else
+                    sqlQuery = sqlQuery + " AND precio<=" + pmax;
             }
-        if (cat||page||pmax||pmin)
-            sqlQuery = sqlQuery + " ORDER BY nombre"+
-                              " LIMIT 5 OFFSET " + (5*parseInt(page)).toString(); //Paginacion 
+            if (cat!=undefined || page || pmax || pmin || nombre!=undefined)
+                sqlQuery = sqlQuery + " ORDER BY nombre" //+
+                    //" LIMIT 5 OFFSET " + (5 * parseInt(page)).toString(); //Paginacion 
         }
-        
+
         //ejecutamos la query de SQL y enviamos el resultado de la petición
         client.query(sqlQuery, (error, data) => {
             if (error) {
@@ -181,11 +217,11 @@ export function getProductsFilterController(req, res) {
     }
 }
 
-export function postProductsFilterController(req,res){
-    try{
+export function postProductsFilterController(req, res) {
+    try {
 
 
-    }catch(error){
+    } catch (error) {
         console.error(error);
         res.send("No fue posible enviar los parámetros de búsqueda al servidor")
     }

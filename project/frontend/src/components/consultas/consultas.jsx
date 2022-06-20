@@ -2,18 +2,32 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./consultas.module.css";
 
+function notNull(string) {
+        return !!string
+}
+
 export function Consultas(){
 
-    const [nombre, setNombre] = useState("");
-    const [preciomin, setPreciomin] = useState(0);
-    const [preciomax, setPreciomax] = useState(0);  
-    const [categoria, setCategoria] = useState("");
-    const [id, setId] = useState(0);
+    const [nombre, setNombre] = useState();
+    const [preciomin, setPreciomin] = useState();
+    const [preciomax, setPreciomax] = useState();  
+    const [categoria, setCategoria] = useState();
+    const [id, setId] = useState();
     const navigate = useNavigate();
 
     function VerListaHandler(){
+      
+        const url = "/listadoProductos/?" + (nombre ? "nombre="+nombre : "") + 
+                                            (notNull(nombre) && notNull(categoria) ? "&" : "") +
 
-        navigate(`/busquedaproducto/?nombre=${nombre}&cat=${categoria}&pmin=${preciomin}&pmax=${preciomax}`);
+                                            (categoria ? "cat="+categoria : "") +
+                                            (notNull(categoria) && notNull(preciomin) ? "&" : "") +
+
+                                            (preciomin ? "pmin="+preciomin : "") +
+                                            (notNull(preciomin) && notNull(preciomax) ? "&" :"") +
+
+                                            (preciomax ? "pmax="+preciomax : "") 
+        navigate(url);
     }
     function NombreHandler(event){
             setNombre(event.target.value);

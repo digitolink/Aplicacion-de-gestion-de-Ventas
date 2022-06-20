@@ -14,7 +14,8 @@ function App() {
         <Route path="/fichaproducto/" element={<VistaGrabarProducto />}>
           <Route path=":id" element={<VistaGrabarProducto />} />
         </Route>
-        <Route path="/busquedaproducto" element={<VistaConsultas />}/>
+        <Route path="/busquedaproducto/" element={<VistaConsultas />}/>
+        {/*<Route path="/listadobusqueda/" element={<VistaListado />}/>*/}
       </Routes>
 
     </>

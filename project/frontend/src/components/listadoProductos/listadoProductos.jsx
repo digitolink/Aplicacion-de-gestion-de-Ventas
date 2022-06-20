@@ -13,7 +13,7 @@ export function ListadoProductos() {
 
     async function getData() {
         const response = await fetch(
-            url, {
+            url+window.location.search, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
