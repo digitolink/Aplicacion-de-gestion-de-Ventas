@@ -139,7 +139,7 @@ export function getProductsFilterController(req, res) {
         let sqlQuery = "SELECT * FROM productos WHERE ";
         let soyPrimero = true;
 
-        if (nombre!=undefined) {
+        if (nombre != undefined) {
             if (soyPrimero) {
                 sqlQuery = sqlQuery + "nombre='" + nombre + "'";
                 soyPrimero = !soyPrimero;
@@ -147,7 +147,7 @@ export function getProductsFilterController(req, res) {
             else
                 sqlQuery = sqlQuery + " AND nombre='" + nombre + "'";
         }
-        if (cat!=undefined) {
+        if (cat != undefined) {
             if (soyPrimero) {
                 sqlQuery = sqlQuery + "categorias='" + cat + "'";
                 soyPrimero = !soyPrimero;
@@ -174,27 +174,26 @@ export function getProductsFilterController(req, res) {
                 sqlQuery = sqlQuery + " AND precio BETWEEN " + pmin +
                     " AND " + pmax;
         }
-        else {
-            if (pmin && !pmax) {
-                if (soyPrimero) {
-                    sqlQuery = sqlQuery + "precio>=" + pmin;
-                    soyPrimero = !soyPrimero;
-                }
-                else
-                    sqlQuery = sqlQuery + " AND precio>=" + pmin;
+        if (pmin && !pmax) {
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "precio>=" + pmin;
+                soyPrimero = !soyPrimero;
             }
-            else {
-                if (soyPrimero) {
-                    sqlQuery = sqlQuery + "precio<=" + pmax;
-                    soyPrimero = !soyPrimero;
-                }
-                else
-                    sqlQuery = sqlQuery + " AND precio<=" + pmax;
-            }
-            if (cat!=undefined || page || pmax || pmin || nombre!=undefined)
-                sqlQuery = sqlQuery + " ORDER BY nombre" //+
-                    //" LIMIT 5 OFFSET " + (5 * parseInt(page)).toString(); //Paginacion 
+            else
+                sqlQuery = sqlQuery + " AND precio>=" + pmin;
         }
+        if (!pmin && pmax) {
+            if (soyPrimero) {
+                sqlQuery = sqlQuery + "precio<=" + pmax;
+                soyPrimero = !soyPrimero;
+            }
+            else
+                sqlQuery = sqlQuery + " AND precio<=" + pmax;
+        }
+        if (cat != undefined || page || pmax || pmin || nombre != undefined)
+        sqlQuery = sqlQuery + " ORDER BY nombre" //+
+    //" LIMIT 5 OFFSET " + (5 * parseInt(page)).toString(); //Paginacion 
+    console.log(sqlQuery);
 
         //ejecutamos la query de SQL y enviamos el resultado de la petición
         client.query(sqlQuery, (error, data) => {

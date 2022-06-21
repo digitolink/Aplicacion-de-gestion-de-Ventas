@@ -8,34 +8,33 @@ export function TdComponent({ datarow }) {
     useEffect(
         () => {
             const tempItems = [];
+            tempItems.push(
+                <td><Link to={"/fichaproducto/" + datarow.idproducto}>{datarow.idproducto}</Link></td>
+            );
+            tempItems.push(
+                <td>{datarow.nombre}</td>
+            )
+            tempItems.push(
+                <td>{datarow.precio}</td>
+            )
+            tempItems.push(
+                <td>{datarow.categorias}</td>
+            )
 
-            for (let i in datarow) {
-                console.log(i);
-                if (i === "idproducto") {
-                    tempItems.push(
-                        <td><Link to={"/fichaproducto/" + datarow.idproducto}>{datarow.idproducto}</Link></td>
-                    );
-                }
-                else { 
-                tempItems.push(
-                    <td>{datarow[i]}</td>
-                )
-            }
-        }
             setItems(tempItems)
         },
-[]
+        []
     )
 
 
-return (
-    <>
-        <tr>
-            {items}
-        </tr>
+    return (
+        <>
+            <tr>
+                {items}
+            </tr>
 
-    </>
+        </>
 
-)
+    )
 
 }

@@ -10,7 +10,7 @@ function App() {
     <>
       <BarraNav/>
       <Routes>
-        <Route path="/listadoproductos" element={<VistaListado />} />
+        <Route path="/listadoproductos/" element={<VistaListado />} />
         <Route path="/fichaproducto/" element={<VistaGrabarProducto />}>
           <Route path=":id" element={<VistaGrabarProducto />} />
         </Route>

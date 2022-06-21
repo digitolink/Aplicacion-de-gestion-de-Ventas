@@ -15,19 +15,17 @@ export function Consultas(){
     const [id, setId] = useState();
     const navigate = useNavigate();
 
+
     function VerListaHandler(){
       
-        const url = "/listadoProductos/?" + (nombre ? "nombre="+nombre : "") + 
-                                            (notNull(nombre) && notNull(categoria) ? "&" : "") +
-
-                                            (categoria ? "cat="+categoria : "") +
-                                            (notNull(categoria) && notNull(preciomin) ? "&" : "") +
-
-                                            (preciomin ? "pmin="+preciomin : "") +
-                                            (notNull(preciomin) && notNull(preciomax) ? "&" :"") +
-
-                                            (preciomax ? "pmax="+preciomax : "") 
-        navigate(url);
+        //let url = new URL("/listadoProductos/");
+        let params = new URLSearchParams();
+        if (nombre) params.append("nombre", nombre);
+        if (preciomin) params.append("pmin", preciomin);
+        if (preciomax) params.append("pmax", preciomax);
+        if (categoria) params.append("cat", categoria);
+        if (id) params.append("idProducto", id);
+        navigate("/listadoProductos/?"+params.toString());
     }
     function NombreHandler(event){
             setNombre(event.target.value);
