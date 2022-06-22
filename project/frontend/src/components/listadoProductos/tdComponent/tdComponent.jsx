@@ -9,16 +9,16 @@ export function TdComponent({ datarow }) {
         () => {
             const tempItems = [];
             tempItems.push(
-                <td><Link to={"/fichaproducto/" + datarow.idproducto}>{datarow.idproducto}</Link></td>
+                <td key={"1"}><Link to={"/fichaproducto/" + datarow.idproducto}>{datarow.idproducto}</Link></td>
             );
             tempItems.push(
-                <td>{datarow.nombre}</td>
+                <td key={"2"}>{datarow.nombre}</td>
             )
             tempItems.push(
-                <td>{datarow.precio}</td>
+                <td key={"3"}>{datarow.precio}</td>
             )
             tempItems.push(
-                <td>{datarow.categorias}</td>
+                <td key={"4"}>{datarow.categorias}</td>
             )
 
             setItems(tempItems)

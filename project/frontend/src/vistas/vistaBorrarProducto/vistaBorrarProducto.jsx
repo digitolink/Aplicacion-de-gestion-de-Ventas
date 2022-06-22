@@ -1,3 +1,11 @@
-export function BorrarProducto(){
+export function VistaBorrarProducto(){
+
+    return(
+        <>
+            <BorrarProducto/>
+        
+        </>
+
+    )
     
 }

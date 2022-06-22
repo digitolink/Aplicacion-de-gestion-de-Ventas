@@ -9,8 +9,11 @@ export function BarraNav() {
         <>
             <nav className={styles.barra}>
                 <div>
-                    <Link to={"/fichaproducto"}>
-                        <img src={logotipo} alt="ejemplo logotipo" className={styles.logotipo} />
+                    <Link to={"/busquedaproducto"}>
+                        <img src={logotipo} 
+                             alt="ejemplo logotipo" 
+                             className={styles.logotipo} 
+                             title="Ir al inicio"/>
                     </Link>
                 </div>
 

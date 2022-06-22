@@ -133,8 +133,6 @@ export function getProductsFilterController(req, res) {
 
         //construímos la query de SQL con los parámetros de la
         //query de la URL pasada al fetch
-        //let sqlQuery = "SELECT idProducto, nombre, precio, categorias FROM productos";
-
 
         let sqlQuery = "SELECT * FROM productos WHERE ";
         let soyPrimero = true;
@@ -216,12 +214,31 @@ export function getProductsFilterController(req, res) {
     }
 }
 
-export function postProductsFilterController(req, res) {
+export function deleteProductFilterController(req, res) {
     try {
+        let id = req.params.id;
+        const sqlQuery="DELETE FROM productos WHERE idproducto= " + parseInt(id);
+        client.query(sqlQuery,(error, data) => {
+            if(error){
+                console.error(error);
+                res.send("Hubo un error al borrar el producto");
+            }
+            else{
+                res.send(data.rowcont);
+                /*
+                if(data.rowCount>0){
+                    res.send("Producto borrado");
+                }    
+                else{
+                    res.send("El producto no existe");
+                    console.log("Producto borrado");
+                }*/
+            }
+        } )
 
 
     } catch (error) {
         console.error(error);
-        res.send("No fue posible enviar los parámetros de búsqueda al servidor")
+        res.send("No fue posible borrar el producto")
     }
 }
