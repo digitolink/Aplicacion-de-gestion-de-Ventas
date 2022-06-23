@@ -224,7 +224,8 @@ export function deleteProductFilterController(req, res) {
                 res.send("Hubo un error al borrar el producto");
             }
             else{
-                res.send(data.rowcont);
+                console.log(data.rowCount);
+                res.json(data.rowCount);
                 /*
                 if(data.rowCount>0){
                     res.send("Producto borrado");

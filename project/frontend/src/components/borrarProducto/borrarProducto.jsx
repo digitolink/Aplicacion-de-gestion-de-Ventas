@@ -14,22 +14,8 @@ export function BorrarProducto() {
 
     async function BorrarHandler() {
 
-        /*//comprobamos si el producto está en la base de datos
-        const filaid = await fetch(
-            urlconsulta + id,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
-        )
-
-        console.log(await filaid.text());
-        */
-        
         //Enviamos petición de borrado
-        const response = fetch(
+        const response = await fetch(
             urlborrado + id,
             {
                 method: "DELETE",
@@ -37,9 +23,10 @@ export function BorrarProducto() {
                     "Content-Type": "application/json"
                 }
             })
-        console.log("REGISTROS BORRADOS: "+response.body)
+        const contenido=await response.json();
+        console.log("\nREGISTROS BORRADOS: "+contenido+"\n")
         
-        if(response.body>0)
+        if(contenido>0)
             alert("Producto borrado");
         else{
             alert("Producto no encontrado")
