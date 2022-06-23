@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { rutaHost } from "../rutaHost";
 import styles from "./fichaProducto.module.css";
 //import img from "./shoes.jpg"
 
@@ -26,9 +27,9 @@ export function FichaProducto(props) {
 
     const[disableForm, setDisableForm] = useState(true);
 
-    const url = "http://localhost:3001/api/v0.1/product/"+params.id;
-    const urlPostProduct = "http://localhost:3001/api/v0.1/product";
-    const urlPostImage = "http://localhost:3001/upload/";
+    const url = rutaHost()+"api/v0.1/product/"+params.id;
+    const urlPostProduct = rutaHost()+"api/v0.1/product";
+    const urlPostImage = rutaHost()+"upload/";
 
     const data= {
         foto: "",

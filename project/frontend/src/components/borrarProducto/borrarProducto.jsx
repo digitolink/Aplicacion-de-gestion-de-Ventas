@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { rutaHost } from "../rutaHost";
 import styles from "./borrarProducto.module.css";
-const urlborrado = "http://localhost:3001/api/v0.1/productFilter/";
-const urlconsulta = "http://localhost:3001/api/v0.1/product/"
+
+const urlborrado = rutaHost()+"api/v0.1/productFilter/";
+const urlconsulta = rutaHost()+"api/v0.1/product/"
 
 export function BorrarProducto() {
 

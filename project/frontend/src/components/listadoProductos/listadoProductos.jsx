@@ -2,6 +2,7 @@
 //filtrar los resultados por cat, pmin, pmax y page. La otra 
 //alternativa es mandar los parámetros en un fichero JSON con POST
 import { useEffect, useState } from "react";
+import { rutaHost } from "../rutaHost";
 import styles from "./listadoProductos.module.css";
 import { TdComponent } from "./tdComponent/tdComponent";
 
@@ -9,7 +10,7 @@ export function ListadoProductos() {
 
     const [filas, setFilas] = useState([]);
 
-    const url = "http://localhost:3001/api/v0.1/productFilter/";
+    const url = rutaHost()+"api/v0.1/productFilter/";
 
     async function getData() {
         const response = await fetch(

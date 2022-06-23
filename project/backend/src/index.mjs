@@ -29,6 +29,7 @@ try {
     //"./uploads/" será la ruta de la carpeta física en el servidor
     //desde donde esté el package.json, se debe crear previamente
     expressInstance.use("/images/", express.static("./uploads/"));
+    expressInstance.use("/", express.static("../../frontend/build/", {index: index.html}));
 
     //"/upload/" será la ruta para las peticiones post
     //este endpoint envía el fichero de imagen a s3
