@@ -7,7 +7,7 @@ COPY . .
 
 WORKDIR /usr/src/app/project/frontend
 RUN npm install
-RUN npm build
+RUN npm run build
 RUN rm .gitignore package.json package-lock.json public README.md src node_modules -rf
 
 
