@@ -21,7 +21,7 @@ try {
     
     const expressInstance = express();
     expressInstance.listen(process.env.PORT, () => {
-        console.log("Express ejecutándose...");
+        console.log("Express ejecutándose en puerto ...", process.env.PORT);
     })
     expressInstance.use(express.json());
 
