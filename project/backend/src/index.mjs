@@ -5,7 +5,7 @@ import { productSchema } from "./schemas/product.mjs";
 import aws from "aws-sdk";
 import { config } from 'dotenv'
 
-const PORT = 3001;
+//const PORT = 3001;
 //crear la instancia de express y lanza el servidor
 //crear la api con la instancia de express
 
@@ -20,7 +20,7 @@ try {
     })
     
     const expressInstance = express();
-    expressInstance.listen(PORT, () => {
+    expressInstance.listen(process.env.PORT, () => {
         console.log("Express ejecutándose...");
     })
     expressInstance.use(express.json());
