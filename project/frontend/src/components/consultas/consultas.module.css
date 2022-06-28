@@ -17,3 +17,11 @@
     background-color: rgb(202, 155, 155);
     height: 85vh;
 }
+
+.enlinea{
+    display:flex;
+}
+
+.margen{
+    margin-left: 50px;
+}

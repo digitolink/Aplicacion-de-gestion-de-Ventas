@@ -55,26 +55,27 @@ export function Consultas() {
                                 />
                                 <br />
 
-
                                 <label htmlFor="preciominlabel">Rango de precio: </label><br />
-                                <input type="text"
-                                        name="preciominlabel"
-                                        id="preciomin"
-                                        placeholder="Indica precio minimo"
-                                        value={preciomin}
-                                        onChange={PrecioMinHandler}
-                                />
-                                -
+                                <div className={styles.enlinea}>
+                                        
+                                        <input type="text"
+                                                name="preciominlabel"
+                                                id="preciomin"
+                                                placeholder="Indica precio minimo"
+                                                value={preciomin}
+                                                onChange={PrecioMinHandler}
+                                        />
 
-                                <label htmlFor="preciomaxlabel"></label><br />
-                                <input type="text"
-                                        name="preciomaxlabel"
-                                        id="preciomax"
-                                        placeholder="Indica precio máximo"
-                                        value={preciomax}
-                                        onChange={PrecioMaxHandler} />
-                                <br />
-
+                                        <label htmlFor="preciomaxlabel"></label><br />
+                                        <input type="text"
+                                                name="preciomaxlabel"
+                                                id="preciomax"
+                                                placeholder="Indica precio máximo"
+                                                value={preciomax}
+                                                className={styles.margen}
+                                                onChange={PrecioMaxHandler} />
+                                        <br />
+                                </div>
 
                                 <label htmlFor="categorialabel">Categoría: </label><br />
                                 <input type="text"
