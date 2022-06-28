@@ -2,11 +2,12 @@
     display:flex;
     font-weight: bold;
     color:green;
+    height: 10vh;
 
 }
 .logotipo{
-    width: 100px;
-    height: auto; 
+    width: auto;
+    height: 10vh; 
 }
 .lista{
     list-style-type:none;
