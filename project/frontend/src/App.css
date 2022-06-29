@@ -38,6 +38,22 @@
 }
 
 footer{
-  background-color:black;
+  background-color:rgb(54, 39, 39);
   height: 10vh;
+}
+
+a:hover{
+  text-decoration: underline black;
+
+}
+
+a:link{
+  color:rgb(172, 92, 92);
+  text-decoration: none;
+  
+}
+
+a:visited{
+  color:rgb(172, 92, 92);
+  text-decoration: double black;
 }

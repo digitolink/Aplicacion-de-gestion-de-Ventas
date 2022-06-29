@@ -3,6 +3,7 @@ import styles from "./barranav.module.css";
 import logotipo from "./logopeq.jpg"
 import sesion from "./iniciar sesion.png"
 
+
 export function BarraNav() {
 
     return (
@@ -19,7 +20,7 @@ export function BarraNav() {
 
                 <div className={styles.menu} >
                     <ul className={styles.lista}>
-                        <li><Link to={"/fichaproducto"} alt="alta de producto">Altas</Link></li>
+                        <li id="elemento"><Link to={"/fichaproducto"} alt="alta de producto">Altas</Link></li>
                         <li><Link to={"/bajaproducto"} alt="baja de producto">Bajas</Link></li>
                         <li><Link to={"/busquedaproducto"} alt="busqueda de productos">Buscar</Link></li>
                     </ul>

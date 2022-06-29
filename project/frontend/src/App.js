@@ -1,10 +1,9 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { VistaListado } from "./vistas/vistaListado/vistaListado.jsx";
 import { VistaGrabarProducto } from "./vistas/vistaGrabarProducto/vistaGrabarProducto.jsx";
 import { BarraNav } from './components/barranav/barranav';
 import { VistaConsultas } from './vistas/vistaConsultas/vistaConsultas';
-import { BorrarProducto } from './components/borrarProducto/borrarProducto';
 import { VistaBorrarProducto } from './vistas/vistaBorrarProducto/vistaBorrarProducto';
 
 function App() {

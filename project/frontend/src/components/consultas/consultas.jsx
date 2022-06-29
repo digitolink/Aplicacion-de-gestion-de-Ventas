@@ -44,63 +44,65 @@ export function Consultas() {
 
         return (
                 <>
-                        <form id="busqueda" className={styles.datosProducto}>
-                                <label htmlFor="nombrelabel">Nombre: </label><br />
-                                <input type="text"
-                                        name="nombrelabel"
-                                        id="nombre"
-                                        placeholder="Indica nombre"
-                                        value={nombre}
-                                        onChange={NombreHandler}
-                                />
-                                <br />
-
-                                <label htmlFor="preciominlabel">Rango de precio: </label><br />
-                                <div className={styles.enlinea}>
-                                        
+                        <div className={styles.datosProducto}>
+                                <form id="busqueda" className={styles.datosForm}>
+                                        <label htmlFor="nombrelabel">Nombre: </label><br />
                                         <input type="text"
-                                                name="preciominlabel"
-                                                id="preciomin"
-                                                placeholder="Indica precio minimo"
-                                                value={preciomin}
-                                                onChange={PrecioMinHandler}
+                                                name="nombrelabel"
+                                                id="nombre"
+                                                placeholder="Indica nombre"
+                                                value={nombre}
+                                                onChange={NombreHandler}
                                         />
-
-                                        <label htmlFor="preciomaxlabel"></label><br />
-                                        <input type="text"
-                                                name="preciomaxlabel"
-                                                id="preciomax"
-                                                placeholder="Indica precio máximo"
-                                                value={preciomax}
-                                                className={styles.margen}
-                                                onChange={PrecioMaxHandler} />
                                         <br />
-                                </div>
 
-                                <label htmlFor="categorialabel">Categoría: </label><br />
-                                <input type="text"
-                                        name="categorialabel"
-                                        id="categoria"
-                                        placeholder="Indica categoría"
-                                        value={categoria}
-                                        onChange={CategoriaHandler} />
-                                <br />
+                                        <label htmlFor="preciominlabel">Rango de precio: </label><br />
+                                        <div className={styles.enlinea}>
+
+                                                <input type="text"
+                                                        name="preciominlabel"
+                                                        id="preciomin"
+                                                        placeholder="Indica precio minimo"
+                                                        value={preciomin}
+                                                        onChange={PrecioMinHandler}
+                                                />
+
+                                                <label htmlFor="preciomaxlabel"></label><br />
+                                                <input type="text"
+                                                        name="preciomaxlabel"
+                                                        id="preciomax"
+                                                        placeholder="Indica precio máximo"
+                                                        value={preciomax}
+                                                        className={styles.margen}
+                                                        onChange={PrecioMaxHandler} />
+                                                <br />
+                                        </div>
+
+                                        <label htmlFor="categorialabel">Categoría: </label><br />
+                                        <input type="text"
+                                                name="categorialabel"
+                                                id="categoria"
+                                                placeholder="Indica categoría"
+                                                value={categoria}
+                                                onChange={CategoriaHandler} />
+                                        <br />
 
 
-                                <label htmlFor="idlabel">ID: </label><br />
-                                <input type="text"
-                                        name="idlabel"
-                                        id="id"
-                                        placeholder="Indica identificador"
-                                        value={id}
-                                        onChange={IdHandler} />
-                                <br />
+                                        <label htmlFor="idlabel">ID: </label><br />
+                                        <input type="text"
+                                                name="idlabel"
+                                                id="id"
+                                                placeholder="Indica identificador"
+                                                value={id}
+                                                onChange={IdHandler} />
+                                        <br />
 
-                                <button type="button" onClick={VerListaHandler}>Buscar </button>
+                                        <button type="button" onClick={VerListaHandler}>Buscar </button>
 
 
-                        </form>
 
+                                </form>
+                        </div>
                 </>
 
         )

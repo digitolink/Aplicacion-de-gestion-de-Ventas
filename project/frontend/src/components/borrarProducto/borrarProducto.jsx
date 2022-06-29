@@ -2,8 +2,8 @@ import { useState } from "react"
 import { rutaHost } from "../rutaHost";
 import styles from "./borrarProducto.module.css";
 
-const urlborrado = rutaHost()+"api/v0.1/productFilter/";
-const urlconsulta = rutaHost()+"api/v0.1/product/"
+const urlborrado = rutaHost() + "api/v0.1/productFilter/";
+const urlconsulta = rutaHost() + "api/v0.1/product/"
 
 export function BorrarProducto() {
 
@@ -25,29 +25,32 @@ export function BorrarProducto() {
                     "Content-Type": "application/json"
                 }
             })
-        const contenido=await response.json();
-        console.log("\nREGISTROS BORRADOS: "+contenido+"\n")
-        
-        if(contenido>0)
+        const contenido = await response.json();
+        console.log("\nREGISTROS BORRADOS: " + contenido + "\n")
+
+        if (contenido > 0)
             alert("Producto borrado");
-        else{
+        else {
             alert("Producto no encontrado")
         }
     }
 
     return (
         <>
-            <form id="borradoForm" className={styles.datosProducto}>
-                <label htmlFor="id">ID</label> <br />
-                <input type="text"
-                    name="id"
-                    placeholder="Indica el ID del producto a borrar"
-                    value={id}
-                    onChange={IdHandler} />
-                <br />
-                <button type="button" onClick={BorrarHandler}> Borrar producto</button>
-            </form>
+            <div className={styles.datosProducto}>
+                <form id="borradoForm" className={styles.datosForm}>
 
+                    <label htmlFor="id">ID</label> <br />
+                    <input type="text"
+                        name="id"
+                        placeholder="Indica el ID del producto a borrar"
+                        value={id}
+                        onChange={IdHandler} />
+                    <br />
+                    <button type="button" onClick={BorrarHandler}> Borrar producto</button>
+
+                </form>
+            </div>
         </>
 
     )

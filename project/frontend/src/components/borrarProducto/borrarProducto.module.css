@@ -3,6 +3,7 @@
     margin-bottom: 25px;
     width:300px;
     padding:5px;
+
 }
 
 .datosProducto button {
@@ -13,7 +14,13 @@
     background-color:beige;
 }
 .datosProducto{
-    margin: 10px;
+    margin-left: 0px;
     background-color: rgb(202, 155, 155);
-    height: 75vh;
+    height: 80vh;
 }
+
+.datosForm{
+    margin-left:10px;
+}
+
+
