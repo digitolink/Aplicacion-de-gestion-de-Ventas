@@ -1,4 +1,4 @@
-import pg from "pg";
+import  pg  from "pg";
 import { config } from "dotenv";
 
 /**
@@ -29,3 +29,22 @@ client.query(creaTablaProductos, (err, res) => {
     console.log(err, res);
     //client.end();
 })
+
+/*
+const creaTablaUsuarios=
+`CREATE TABLE
+IF NOT EXISTS
+usuarios(
+    rol VARCHAR(50) NOT NULL DEFAULT invitado,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
+    idusuario SERIAL PRIMARY KEY 
+)`
+
+
+client.query(creaTablaUsuarios, (err, res) =>{
+    console.log(err,res);
+})
+
+*/

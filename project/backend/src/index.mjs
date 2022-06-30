@@ -4,6 +4,7 @@ import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
 import aws from "aws-sdk";
 import { config } from 'dotenv'
+import { postUserController } from "./controllers/userControllers.mjs";
 
 //const PORT = 3001;
 //crear la instancia de express y lanza el servidor
@@ -49,6 +50,11 @@ try {
     //endpoint para borrar un producto de la base de datos por su id
 
     expressInstance.delete("/api/v0.1/productFilter/:id", deleteProductFilterController);
+
+    //endpoint para dar de alta un usuario (sign up)
+
+    expressInstance.post("/api/v0.1/user", postUserController)
+
 
 } catch (error) {
     console.error(error);
