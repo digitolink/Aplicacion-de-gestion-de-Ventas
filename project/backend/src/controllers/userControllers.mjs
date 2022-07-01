@@ -16,3 +16,15 @@ export async function postUserController(req,res){
         res.send("No fue posible crear el nuevo usuario");
     }
 }
+
+export async function getUsersController(req,res){
+    try{
+        const result = await usuarios.find().toArray();
+        res.json(result);
+
+    }catch(error){
+        console.error(error);
+        res.send("No fue posible listar los usuarios de la base de datos");
+    }
+
+}

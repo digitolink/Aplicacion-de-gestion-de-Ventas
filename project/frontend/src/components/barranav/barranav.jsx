@@ -26,7 +26,7 @@ export function BarraNav() {
                     </ul>
                 </div>
                 <div>
-                    <Link to={"/fichaproducto"}>
+                    <Link to={"/signup"}>
                         <img src={sesion} alt="iniciar sesion" className={styles.login} />
                     </Link>
                 </div>
