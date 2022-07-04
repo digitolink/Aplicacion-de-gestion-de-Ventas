@@ -124,6 +124,8 @@ export function FichaProducto(props) {
     useEffect(
         
          ()=> {
+           if(params.id !== undefined){
+
            fetch(
                 url,
                 {
@@ -149,6 +151,7 @@ export function FichaProducto(props) {
 
                 }
             )
+           }
         },
         []
         
