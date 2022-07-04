@@ -11,7 +11,7 @@ export async function postUserController(req,res){
         const result = await usuarios.insertOne({
             rol: req.body.rol,
             nombre: req.body.nombre,
-            password: (await hashedPassword).toString(),
+            password: (await hashedPassword),
             email: req.body.email
         })
         res.json(result);
