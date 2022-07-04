@@ -6,6 +6,7 @@ import { BarraNav } from './components/barranav/barranav';
 import { VistaConsultas } from './vistas/vistaConsultas/vistaConsultas';
 import { VistaBorrarProducto } from './vistas/vistaBorrarProducto/vistaBorrarProducto';
 import { SignUp } from './vistas/signup/signup';
+import { Login } from './vistas/login/login';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<VistaConsultas />}/>
           <Route path="/bajaproducto/" element={<VistaBorrarProducto />}/>
           <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </div>
 

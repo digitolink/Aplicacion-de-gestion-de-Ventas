@@ -33,3 +33,16 @@ export async function getUsersController(req,res){
     }
 
 }
+
+export async function getUserController(req,res){
+    try{
+        const result = await usuarios.findOne();
+        console.log(result);
+        res.json(result);
+
+    }catch(error){
+        console.error(error);
+        res.send("No fue posible encontrar el usuario en la base de datos");
+    }
+
+}

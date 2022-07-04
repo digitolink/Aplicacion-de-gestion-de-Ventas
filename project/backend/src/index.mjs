@@ -4,7 +4,7 @@ import { validatorFactory } from "./middleware/validatorFactory.mjs";
 import { productSchema } from "./schemas/product.mjs";
 import aws from "aws-sdk";
 import { config } from 'dotenv'
-import { getUsersController, postUserController } from "./controllers/userControllers.mjs";
+import { getUserController, getUsersController, postUserController } from "./controllers/userControllers.mjs";
 
 //const PORT = 3001;
 //crear la instancia de express y lanza el servidor
@@ -55,10 +55,13 @@ try {
 
     expressInstance.post("/api/v0.1/user", postUserController);
 
-    //endpoint para recuperar los datos de los usuarios
+    //endpoint para recuperar los datos de todos los usuarios
 
     expressInstance.get("/api/v0.1/users", getUsersController);
 
+    //endpoint para recuperar los datos de un usuario
+
+    expressInstance.get("/api/v0.1/user", getUserController);
 
 } catch (error) {
     console.error(error);
