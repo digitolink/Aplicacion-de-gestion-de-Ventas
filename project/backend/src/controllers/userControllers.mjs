@@ -1,12 +1,17 @@
 import {usuarios} from "../dbMongo.mjs";
+import bcrypt from "bcrypt";
 
 export async function postUserController(req,res){
+    //encriptamos req.body.password
+    const hashedPassword = 
+    bcrypt.hash(req.body.password + process.env.BCRYPT_SECRET,
+        parseInt(process.env.BCRYPT_ROUNDS));
 
     try{
         const result = await usuarios.insertOne({
             rol: req.body.rol,
             nombre: req.body.nombre,
-            password: req.body.password,
+            password: (await hashedPassword).toString(),
             email: req.body.email
         })
         res.json(result);
