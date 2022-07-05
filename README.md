@@ -12,11 +12,11 @@
  
  -***Express*** framework for API REST.
  
- -***PostgreSQL*** for relational product data.
+ -***PostgreSQL*** in ElephantSQL cloud for relational product data.
 
- -***MongoDB*** for login data.
+ -***MongoDB*** in Railway cloud for login data.
 
- -Put in production on ***Railway cloud***.
+ -Put to production on ***Railway cloud***.
  
 
 [Railway cloud link to the VentasAPP](https://aplicacion-de-gestion-de-ventas-production.up.railway.app/)
