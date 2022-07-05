@@ -1,16 +1,27 @@
-# Trading management Application Project
+# Trading management Application Project - VentasAPP
 
- Upload, delete and search products from a database in ElephantSQL cloud.
+ Upload, delete and search products from a database.
 
- Technologies: 
- -Made in Javascript language.
- -Node server for backend.
- -Express framework for API REST.
- -PostgreSQL for relational data
- -Put in production on railway cloud.
- -React for reactive frontend.
+ Technologies that I am using: 
 
- https://aplicacion-de-gestion-de-ventas-production.up.railway.app/
+ -Made in ***HTML, CSS and Javascript*** languages.
+
+ -***ReactJS*** for reactive frontend.
+
+ -***Node*** server for backend.
+ 
+ -***Express*** framework for API REST.
+ 
+ -***PostgreSQL*** for relational product data.
+
+ -***MongoDB*** for login data.
+
+ -Put in production on ***Railway cloud***.
+ 
+
+[Railway cloud link to the VentasAPP](https://aplicacion-de-gestion-de-ventas-production.up.railway.app/)
+
+ [VentasAPP in Github repository](https://github.com/digitolink/Aplicacion-de-gestion-de-Ventas)
 
 
 
